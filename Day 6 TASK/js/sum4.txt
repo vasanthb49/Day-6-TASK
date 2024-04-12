@@ -1,0 +1,28 @@
+//write a class to calculate the Uber price:
+
+class UberPriceCalculator {
+    private _baseFare: number;
+    private _costPerKilometer: number;
+    private _costPerMinute: number;
+
+    constructor(baseFare: number, costPerKilometer: number, costPerMinute: number) {
+        this._baseFare = baseFare;
+        this._costPerKilometer = costPerKilometer;
+        this._costPerMinute = costPerMinute;
+    }
+
+    calculatePrice(distance: number, time: number): number {
+        // Calculate the fare based on distance and time
+        const fare = this._baseFare + (distance * this._costPerKilometer) + (time * this._costPerMinute);
+        return fare;
+    }
+}
+
+// Example usage:
+const priceCalculator = new UberPriceCalculator(5, 2, 0.5); // Base fare: $5, Cost per kilometer: $2, Cost per minute: $0.5
+
+// Calculate the price for a ride of 10 kilometers taking 20 minutes
+const distance = 10; // in kilometers
+const time = 20; // in minutes
+const price = priceCalculator.calculatePrice(distance, time);
+console.log(`The price of the Uber ride is: $${price.toFixed(2)}`);
